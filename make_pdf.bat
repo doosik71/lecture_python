@@ -1,6 +1,6 @@
 
 
-jupyter nbconvert --to=pdf --template=./templates/article.tplx --output-dir=./pdf/ RE.ipynb
+jupyter nbconvert --to=pdf --template=./templates/article.tplx --output-dir=./pdf/ README.ipynb
 jupyter nbconvert --to=pdf --template=./templates/article.tplx --output-dir=./pdf/ 10_python/11_Introduction.ipynb
 jupyter nbconvert --to=pdf --template=./templates/article.tplx --output-dir=./pdf/ 10_python/12_pip.ipynb
 jupyter nbconvert --to=pdf --template=./templates/article.tplx --output-dir=./pdf/ 10_python/13_Anaconda.ipynb
