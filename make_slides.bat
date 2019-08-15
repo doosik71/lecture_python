@@ -10,6 +10,7 @@ jupyter nbconvert --to=slides --output-dir=./slides/10_python/ 10_python/15_A_By
 jupyter nbconvert --to=slides --output-dir=./slides/10_python/ 10_python/16_Numpy.ipynb
 jupyter nbconvert --to=slides --output-dir=./slides/10_python/ 10_python/17_Matplotlib.ipynb
 jupyter nbconvert --to=slides --output-dir=./slides/10_python/ 10_python/18_Scikit_learn.ipynb
+jupyter nbconvert --to=slides --output-dir=./slides/10_python/ 10_python/19_Linear_Algebra.ipynb
 
 copy /Y 10_python\*.png .\slides\10_python\
 

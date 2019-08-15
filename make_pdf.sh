@@ -12,6 +12,7 @@ jupyter nbconvert --to=pdf --template=../templates/article.tplx --output-dir=../
 jupyter nbconvert --to=pdf --template=../templates/article.tplx --output-dir=../pdf/10_python/ 16_Numpy.ipynb
 jupyter nbconvert --to=pdf --template=../templates/article.tplx --output-dir=../pdf/10_python/ 17_Matplotlib.ipynb
 jupyter nbconvert --to=pdf --template=../templates/article.tplx --output-dir=../pdf/10_python/ 18_Scikit_learn.ipynb
+jupyter nbconvert --to=pdf --template=../templates/article.tplx --output-dir=../pdf/10_python/ 19_Linear_Algebra.ipynb
 
 cd ../20_opencv
 
