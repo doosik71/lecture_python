@@ -6,3 +6,5 @@ pdf/*
 slides/*
 temp/*
 *.log
+__pycache__
+
