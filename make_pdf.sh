@@ -22,6 +22,7 @@ jupyter nbconvert --to=pdf --template=../templates/article.tplx --output-dir=../
 jupyter nbconvert --to=pdf --template=../templates/article.tplx --output-dir=../pdf/20_opencv/ 24_Feature_Detection.ipynb
 jupyter nbconvert --to=pdf --template=../templates/article.tplx --output-dir=../pdf/20_opencv/ 25_Video_Processing.ipynb
 jupyter nbconvert --to=pdf --template=../templates/article.tplx --output-dir=../pdf/20_opencv/ 26_Machine_Learning.ipynb
+jupyter nbconvert --to=pdf --template=../templates/article.tplx --output-dir=../pdf/20_opencv/ 27_Object_Detection.ipynb
 
 cd ../30_deep_learning
 
@@ -31,6 +32,11 @@ jupyter nbconvert --to=pdf --template=../templates/article.tplx --output-dir=../
 jupyter nbconvert --to=pdf --template=../templates/article.tplx --output-dir=../pdf/30_deep_learning/ 34_CNN.ipynb
 jupyter nbconvert --to=pdf --template=../templates/article.tplx --output-dir=../pdf/30_deep_learning/ 35_Supervised_Learning.ipynb
 jupyter nbconvert --to=pdf --template=../templates/article.tplx --output-dir=../pdf/30_deep_learning/ 36_Applications.ipynb
+
+cd 37_Yolo
+
+jupyter nbconvert --to=pdf --template=../../templates/article.tplx --output-dir=../../pdf/30_deep_learning/ 37_Yolo.ipynb
+cd ..
 
 cd ../40_tensorflow
 

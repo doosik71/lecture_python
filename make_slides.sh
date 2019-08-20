@@ -20,6 +20,7 @@ jupyter nbconvert --to=slides --output-dir=./slides/20_opencv/ 20_opencv/23_Draw
 jupyter nbconvert --to=slides --output-dir=./slides/20_opencv/ 20_opencv/24_Feature_Detection.ipynb
 jupyter nbconvert --to=slides --output-dir=./slides/20_opencv/ 20_opencv/25_Video_Processing.ipynb
 jupyter nbconvert --to=slides --output-dir=./slides/20_opencv/ 20_opencv/26_Machine_Learning.ipynb
+jupyter nbconvert --to=slides --output-dir=./slides/20_opencv/ 20_opencv/27_Object_Detection.ipynb
 
 cp -f 20_opencv/*.png ./slides/20_opencv/
 
@@ -29,6 +30,7 @@ jupyter nbconvert --to=slides --output-dir=./slides/30_deep_learning/ 30_deep_le
 jupyter nbconvert --to=slides --output-dir=./slides/30_deep_learning/ 30_deep_learning/34_CNN.ipynb
 jupyter nbconvert --to=slides --output-dir=./slides/30_deep_learning/ 30_deep_learning/35_Supervised_Learning.ipynb
 jupyter nbconvert --to=slides --output-dir=./slides/30_deep_learning/ 30_deep_learning/36_Applications.ipynb
+jupyter nbconvert --to=slides --output-dir=./slides/30_deep_learning/ 30_deep_learning/37_Yolo/37_Yolo.ipynb
 
 cp -f 30_deep_learning/*.gif ./slides/30_deep_learning/
 cp -f 30_deep_learning/*.png ./slides/30_deep_learning/
