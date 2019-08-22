@@ -21,6 +21,7 @@ jupyter nbconvert --to=slides --output-dir=./slides/20_opencv/ 20_opencv/24_Feat
 jupyter nbconvert --to=slides --output-dir=./slides/20_opencv/ 20_opencv/25_Video_Processing.ipynb
 jupyter nbconvert --to=slides --output-dir=./slides/20_opencv/ 20_opencv/26_Machine_Learning.ipynb
 jupyter nbconvert --to=slides --output-dir=./slides/20_opencv/ 20_opencv/27_Object_Detection.ipynb
+jupyter nbconvert --to=slides --output-dir=./slides/20_opencv/ 20_opencv/28_Defect_Inspection.ipynb
 
 copy /Y 20_opencv\*.png .\slides\20_opencv\
 

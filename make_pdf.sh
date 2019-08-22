@@ -23,6 +23,7 @@ jupyter nbconvert --to=pdf --template=../templates/article.tplx --output-dir=../
 jupyter nbconvert --to=pdf --template=../templates/article.tplx --output-dir=../pdf/20_opencv/ 25_Video_Processing.ipynb
 jupyter nbconvert --to=pdf --template=../templates/article.tplx --output-dir=../pdf/20_opencv/ 26_Machine_Learning.ipynb
 jupyter nbconvert --to=pdf --template=../templates/article.tplx --output-dir=../pdf/20_opencv/ 27_Object_Detection.ipynb
+jupyter nbconvert --to=pdf --template=../templates/article.tplx --output-dir=../pdf/20_opencv/ 28_Defect_Inspection.ipynb
 
 cd ../30_deep_learning
 
