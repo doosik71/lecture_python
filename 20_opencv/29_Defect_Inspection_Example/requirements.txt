@@ -1,0 +1,11 @@
+docutils
+kivy
+# kivy.deps.glew
+# kivy.deps.sdl2
+numpy
+pygments
+pypiwin32
+opencv-python
+opencv-contrib-python
+scikit-learn
+scipy
