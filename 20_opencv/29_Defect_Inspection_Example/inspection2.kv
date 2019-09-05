@@ -1,0 +1,56 @@
+#:kivy 1.11.1
+
+<InspectionWindow>:
+    orientation: "vertical"
+    BoxLayout:  # Menu bar.
+        orientation: "horizontal"
+        size_hint_y: None
+        height: "40dp"
+        Label:
+            text: "Menu"
+            size_hint_x: None
+            width: "100dp"
+        Button:
+            id: normal_button
+            text: "Register normal image"
+            on_press: root.register_normal_image()
+        Button:
+            id: defect_button
+            text: "Register defect image"
+            on_press: root.register_defect_image()
+        Button:
+            text: "Close"
+            on_press: root.close()
+    BoxLayout:  # Labels.
+        orientation: "horizontal"
+        size_hint_y: None
+        height: "40dp"
+        Label:
+            text: "Live image"
+        Label:
+            text: "Normal image"
+        Label:
+            text: "Defect image"
+    BoxLayout:  # Registered images.
+        orientation: "horizontal"
+        size_hint_y: 1
+        Image:
+            id: live_image
+            allow_stretch: True
+        Image:
+            id: normal_image
+            allow_stretch: True
+        Image:
+            id: defect_image
+            allow_stretch: True
+    BoxLayout:  # Labels.
+        orientation: "horizontal"
+        size_hint_y: None
+        height: "40dp"
+        Label:
+            text: "Result"
+            size_hint_x: None
+            width: "100dp"
+        Label:
+            id: result
+            text: "Ready"

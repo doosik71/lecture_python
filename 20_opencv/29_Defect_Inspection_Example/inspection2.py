@@ -23,12 +23,9 @@ class InspectionWindow(kivy.uix.boxlayout.BoxLayout):
     def __init__(self, **kwargs):
         super(InspectionWindow, self).__init__(**kwargs)
 
-        self.background_image = None
         self.live_image = None
         self.normal_image = None
         self.defect_image = None
-        self.normal_mask = None
-        self.defect_mask = None
         self.normal_vector = None
         self.defect_vector = None
         self.normal_length = None
@@ -66,58 +63,38 @@ class InspectionWindow(kivy.uix.boxlayout.BoxLayout):
 
         self.calculate_distance()
 
-    def register_background(self):
-        self.background_image, self.ids.background_image.texture = self.capture_image()
-
-    def update_normal_mask(self):
-        # 정상 마스크를 갱신한다.
-        self.normal_mask = get_diff_image(self.background_image, self.normal_image)
-        self.ids.normal_mask.texture = InspectionWindow.image_to_texture(self.normal_mask)
-        self.normal_vector = self.normal_mask.reshape(-1).astype(int)
-        self.normal_length = np.linalg.norm(self.normal_vector)
-
-    def update_defect_mask(self):
-        # 비정상 마스크를 갱신한다.
-        self.defect_mask = get_diff_image(self.background_image, self.defect_image)
-        self.ids.defect_mask.texture = InspectionWindow.image_to_texture(self.defect_mask)
-        self.defect_vector = self.defect_mask.reshape(-1).astype(int)
-        self.defect_length = np.linalg.norm(self.defect_vector)
-
     def register_normal_image(self):
         self.normal_image , self.ids.normal_image.texture = self.capture_image()
-        self.update_normal_mask()
+        self.normal_vector = self.normal_image.reshape(-1).astype(int)
+        self.normal_length = np.linalg.norm(self.normal_vector)
 
     def register_defect_image(self):
         self.defect_image, self.ids.defect_image.texture = self.capture_image()
-        self.update_defect_mask()
+        self.defect_vector = self.defect_image.reshape(-1).astype(int)
+        self.defect_length = np.linalg.norm(self.defect_vector)
 
     def calculate_distance(self):
-        if self.background_image is None:
-            self.ids.result.text = 'Register background!'
-        elif self.normal_mask is None:
+        if self.normal_image is None:
             self.ids.result.text = 'Register normal image!'
-        elif self.defect_mask is None:
+        elif self.defect_image is None:
             self.ids.result.text = 'Register defect image!'
         else:
-            target_to_normal = (self.live_image / 255.0 * self.normal_mask).reshape(-1).astype(int)
-            target_to_defect = (self.live_image / 255.0 * self.defect_mask).reshape(-1).astype(int)
+            target_vector = (self.live_image).reshape(-1).astype(int)
+            target_length = np.linalg.norm(target_vector)
 
-            normal_length = np.linalg.norm(target_to_normal)
-            defect_length = np.linalg.norm(target_to_defect)
-
-            normal_score = np.dot(self.normal_vector, target_to_normal) / (self.normal_length * normal_length)
-            defect_score = np.dot(self.defect_vector, target_to_defect) / (self.defect_length * defect_length)
+            normal_score = np.dot(self.normal_vector, target_vector) / (self.normal_length * target_length)
+            defect_score = np.dot(self.defect_vector, target_vector) / (self.defect_length * target_length)
 
             if normal_score > defect_score:
-                decision = 'Normal!'
+                decision = 'Normal'
             elif normal_score < defect_score:
-                decision = 'Defect!'
+                decision = 'Defect'
             else:
-                decision = 'Equal!'
+                decision = 'Equal'
 
-            self.ids.result.text = '{}: ({} vs. {})'.format(decision,
-                                                            round(normal_score, 2),
-                                                            round(defect_score, 2))
+            self.ids.result.text = '{} ({} vs. {})'.format(decision,
+                                                            round(normal_score, 3),
+                                                            round(defect_score, 3))
 
     def close(self):
         if self.capture is not None:
@@ -126,12 +103,12 @@ class InspectionWindow(kivy.uix.boxlayout.BoxLayout):
         exit()
 
 
-class InspectionApp(kivy.app.App):
+class Inspection2App(kivy.app.App):
     def build(self):
         return InspectionWindow()
 
 
 if __name__ == '__main__':
 
-    InspectionApp().run()
+    Inspection2App().run()
 
