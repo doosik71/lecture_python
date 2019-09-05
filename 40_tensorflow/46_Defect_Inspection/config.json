@@ -1,0 +1,9 @@
+{
+    "model_type": "cnn",
+    "positive_data_path": "./data/positive/",
+    "negative_data_path": "./data/negative/",
+    "image_width": 50,
+    "image_height": 50,
+    "epochs": 30,
+    "model_path": "model.h5"
+}

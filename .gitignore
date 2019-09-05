@@ -8,3 +8,5 @@ temp/*
 *.log
 __pycache__
 
+40_tensorflow/46_Defect_Inspection/data/**
+40_tensorflow/46_Defect_Inspection/model.h5
