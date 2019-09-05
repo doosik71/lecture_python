@@ -34,6 +34,11 @@ class InspectionWindow(kivy.uix.boxlayout.BoxLayout):
         # 주기적으로 화면 갱신을 요청한다.
         kivy.clock.Clock.schedule_interval(self.update_live_image, 0.1)
 
+        self.black_image = InspectionWindow.image_to_texture(np.zeros((10,10,3), dtype=np.uint8))
+
+        self.ids.live_image.texture = self.black_image
+        self.ids.normal_image.texture = self.black_image
+
     @staticmethod
     def image_to_texture(frame):
         # 영상을 상하 반전하고, 문자열 버퍼로 변환한다.
