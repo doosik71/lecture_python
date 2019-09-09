@@ -2,6 +2,9 @@
 Fit network model.
 """
 
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 import cv2
 import json
 import common
@@ -94,7 +97,7 @@ class Fitter():
 
         # 학습 모델을 생성한다.
         print('Building training model...')
-        shape = (self.config.image_height, self.config.image_width, 3)
+        shape = (self.config.image_width, self.config.image_height, 3)
         self.model = common.get_model(shape, self.config.model_type)
 
     def fit(self):

@@ -3,7 +3,7 @@
     "positive_data_path": "./data/positive/",
     "negative_data_path": "./data/negative/",
     "image_width": 50,
-    "image_height": 50,
-    "epochs": 30,
+    "image_height": 20,
+    "epochs": 100,
     "model_path": "model.h5"
 }

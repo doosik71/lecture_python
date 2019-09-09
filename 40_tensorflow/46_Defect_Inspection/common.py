@@ -1,7 +1,11 @@
 """Network model."""
 
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 import cv2
 import json
+import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.models import Sequential  # pylint: disable=import-error
@@ -66,15 +70,16 @@ def read_image(image_path, width, height):
     """Read a image."""
 
     # 영상을 읽는다.
-    image = cv2.imread(image_path)  # pylint: disable=no-member
+    image = plt.imread(image_path)  # pylint: disable=no-member
 
     # 영상을 읽지 못하면, 오류를 출력한다.
     assert image is not None, "Cannot read " + image_path
 
-    # 흑백 영상이면,
-    if len(image.shape) == 2:
+    if len(image.shape) == 2:  # 흑백 영상이면,
         # 컬러 영상으로 변환한다.
         image = cv2.cvtColor(image, cv2.COLOR_GRAY2RGB)  # pylint: disable=no-member
+    elif image.shape[2] == 4:  # RGBA 영상이면,
+        image = cv2.cvtColor(image, cv2.COLOR_RGBA2RGB)  # pylint: disable=no-member
 
     # 원본 영상의 크기를 얻는다.
     h, w, _ = image.shape

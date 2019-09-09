@@ -2,6 +2,9 @@
 Predict output by trained model.
 """
 
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 import cv2
 import json
 import common
@@ -9,6 +12,8 @@ import numpy as np
 import os
 import os.path
 import random
+import sys
+import time
 
 
 class Predictor:
@@ -20,17 +25,15 @@ class Predictor:
         self.config = common.Config(config_path)
 
         # 학습 모델을 읽는다.
-        print('Reading model...')
-        shape = (self.config.image_height, self.config.image_width, 3)
+        shape = (self.config.image_width, self.config.image_height, 3)
         self.model = common.get_model(shape, self.config.model_type)
         self.model.load_weights(self.config.model_path)
-        self.model.summary()
+        # self.model.summary()
 
     def predict(self, image_file_path):
         """Predict output by trained model."""
 
         # 영상을 읽는다.
-        print('Reading image...')
         x = common.read_image(image_file_path,
                               self.config.image_width,
                               self.config.image_height)
@@ -41,7 +44,16 @@ class Predictor:
 
 if __name__ == "__main__":
 
+    start = time.time()
     predictor = Predictor('config.json')
+    loading_time = time.time() - start
+    print('Model loading time =', loading_time)
 
-    print(predictor.predict('./data/positive/2.png'))
-    print(predictor.predict('./data/negative/1.png'))
+    if len(sys.argv) >= 2:
+        for image_path in sys.argv[1:]:
+            print('Input image =', image_path)
+            start = time.time()
+            print('Prediction results =', predictor.predict(image_path))
+            processing_time = time.time() - start
+            print('Processing time =', processing_time)
+
