@@ -41,6 +41,19 @@ class Predictor:
         # 모델을 이용하여 결과를 얻는다.
         return self.model.predict(np.array([x]))
 
+    def predict_all(self, image_file_paths):
+        """Predict output by trained model."""
+
+        # 모든 영상을 읽는다.
+        x = [common.read_image(image_file_path,
+                               self.config.image_width,
+                               self.config.image_height)
+             for image_file_path
+             in image_file_paths]
+
+        # 모델을 이용하여 결과를 얻는다.
+        return self.model.predict(np.array(x))
+
 
 if __name__ == "__main__":
 
@@ -57,3 +70,9 @@ if __name__ == "__main__":
             processing_time = time.time() - start
             print('Processing time =', processing_time)
 
+        image_paths = sys.argv[1:]
+        print('Input images =', image_paths)
+        start = time.time()
+        print('Prediction results =', predictor.predict_all(image_paths))
+        processing_time = time.time() - start
+        print('Processing time =', processing_time)

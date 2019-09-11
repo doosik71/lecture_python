@@ -1,5 +1,5 @@
 .ipynb_checkpoints/
-.vscode/settings.json
+.vscode
 20_opencv/__temp__.mp4
 40_tensorflow/ssd_mobilenet_v1_coco_2018_01_28/**
 pdf/*
