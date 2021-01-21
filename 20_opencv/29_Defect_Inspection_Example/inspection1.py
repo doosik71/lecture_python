@@ -65,14 +65,10 @@ class InspectionWindow(kivy.uix.boxlayout.BoxLayout):
 
         self.calculate_distance()
 
-    def update_normal_mask(self):
-        # 정상 마스크를 갱신한다.
-        self.normal_vector = self.normal_image.reshape(-1).astype(int)
-        self.normal_length = np.linalg.norm(self.normal_vector)
-
     def register_normal_image(self):
         self.normal_image , self.ids.normal_image.texture = self.capture_image()
-        self.update_normal_mask()
+        self.normal_vector = self.normal_image.reshape(-1).astype(int)
+        self.normal_length = np.linalg.norm(self.normal_vector)
 
     def calculate_distance(self):
         if self.normal_image is None:
